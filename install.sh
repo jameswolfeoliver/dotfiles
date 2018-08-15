@@ -54,9 +54,9 @@ fc-cache -vf ~/.local/share/fonts/
 curl https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf > ~/.config/fontconfig/conf.d/
 
 echo "Writing dotfiles"
-curl -fsSL {link} > ~/.gitconfig
-curl -fsSL {link} > ~/.zshrc
-curl -fsSL {link} > ~/.vimrc
+curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/git/.gitconfig > ~/.gitconfig
+curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/zsh/.zshrc > ~/.zshrc
+curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/vim/.vimrc > ~/.vimrc
 
 vim +PlugInstall +qall   
 
