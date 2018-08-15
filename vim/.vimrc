@@ -4,7 +4,6 @@ syntax on
 
 set t_Co=256
 set background=dark
-colorscheme dracula
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 
@@ -19,6 +18,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'RRethy/vim-illuminate'
 Plug 'itchyny/lightline.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 " Status bar mods for light line

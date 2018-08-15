@@ -49,18 +49,15 @@ echo "\n\nInstalling powerlevel9k"
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
 echo "\n\nInstalling powerlevel9k fonts"
-curl https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf > ~/.local/share/fonts/PowerlineSymbols.otf
-curl https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf > ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
-
+wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+mv PowerlineSymbols.otf ~/.local/share/fonts/
 fc-cache -vf ~/.local/share/fonts/
-
-
-echo "\n\nInstalling Vim Plug"
-#curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    #https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 
 echo "\n\nWriting dotfiles"
-curl -fsSL https://raw.githubusercontent.com/dracula/vim/master/colors/dracula.vim > ~/.vim/colors/dracula.vim
+silent !curl -fLo ~/.vim/colors/dracula.vim --create-dirs
+    \ https://raw.githubusercontent.com/dracula/vim/master/colors/dracula.vim
 
 curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/git/.gitconfig > ~/.gitconfig
 curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/zsh/.zshrc > ~/.zshrc
