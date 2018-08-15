@@ -42,24 +42,26 @@ else
     exit
 fi
 
-echo "Installing oh my zsh"
+echo "\n\nInstalling oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-echo "Installing powerlevel9k"
+echo "\n\nInstalling powerlevel9k"
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
-echo "Installing powerlevel9k fonts"
+echo "\n\nInstalling powerlevel9k fonts"
 curl https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf > ~/.local/share/fonts/
 fc-cache -vf ~/.local/share/fonts/
 curl https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf > ~/.config/fontconfig/conf.d/
 
-echo "Writing dotfiles"
+echo "\n\nInstalling Vim Plug"
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+echo "\n\nWriting dotfiles"
 curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/git/.gitconfig > ~/.gitconfig
 curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/zsh/.zshrc > ~/.zshrc
 curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/vim/.vimrc > ~/.vimrc
 
 vim +PlugInstall +qall   
 
-echo "Cleanup"
-
-echo "Finished"
+echo "\n\nFinished"
