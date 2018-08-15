@@ -51,14 +51,13 @@ git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/theme
 echo "\n\nInstalling powerlevel9k fonts"
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
 wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+
 mv PowerlineSymbols.otf ~/.local/share/fonts/
 fc-cache -vf ~/.local/share/fonts/
+
 mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 
 echo "\n\nWriting dotfiles"
-silent !curl -fLo ~/.vim/colors/dracula.vim --create-dirs
-    \ https://raw.githubusercontent.com/dracula/vim/master/colors/dracula.vim
-
 curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/git/.gitconfig > ~/.gitconfig
 curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/zsh/.zshrc > ~/.zshrc
 curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/vim/.vimrc > ~/.vimrc
