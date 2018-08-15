@@ -56,10 +56,12 @@ fc-cache -vf ~/.local/share/fonts/
 
 
 echo "\n\nInstalling Vim Plug"
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+#curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    #https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "\n\nWriting dotfiles"
+curl -fsSL https://raw.githubusercontent.com/dracula/vim/master/colors/dracula.vim > ~/.vim/colors/dracula.vim
+
 curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/git/.gitconfig > ~/.gitconfig
 curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/zsh/.zshrc > ~/.zshrc
 curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/vim/.vimrc > ~/.vimrc
