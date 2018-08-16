@@ -1,3 +1,4 @@
+#!/bin/bash
 ########################################################################################################################
 ## Installing dependancies #############################################################################################
 ########################################################################################################################
@@ -19,7 +20,7 @@ maybeAptInstall() { # $1 name of apt resource
 }
 
 echo "Please input password so we can install dependancies. 
-Feel free to look over the script to make sure no funny business is going down"
+Feel free to look over the script to make sure no funny business is going down."
 
 sudo echo "\nWelcome to James' dotfiles installer!\n"
 
@@ -64,5 +65,5 @@ mkdir ~/.backup_configs
     maybeBackupConfig ~/.zshrc
     curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/zsh/.zshrc > ~/.zshrc
 
-    onStartfinished oh-my-zsh
+    onFinishInstall oh-my-zsh
 # }
