@@ -51,16 +51,16 @@ onFinishInstall() { # $1 is name of resource
 
 maybeBackupConfig() { # $1 is the file path
     if [ -f $1 ]; then
-        mv $1 ~/.backup_configs/
+        mv $1 ~/.backup_configs/ 
     fi
 }
 
-mkdir ~/.backup_configs
+mkdir ~/.backup_configs >/dev/null
 
 # setup oh-my-zsh {
     onStartInstall oh-my-zsh
     chsh -s $(which zsh)
-    #sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
     maybeBackupConfig ~/.zshrc
     curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/zsh/.zshrc > ~/.zshrc
