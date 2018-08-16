@@ -3,7 +3,7 @@
 ## Installing dependancies #############################################################################################
 ########################################################################################################################
 
-maybeAptInstall() { # $1 name of apt resource
+maybeBrewInstall() { # $1 name of apt resource
     echo "Installing $1..."
     silentTest="$1 --version 2>&1 >/dev/null"
     eval $silentTest
@@ -13,32 +13,12 @@ maybeAptInstall() { # $1 name of apt resource
         echo "  $1 -- passed"
     else 
         echo "  $1 -- failed"
-        sudo apt-get install $1
+        brew install $1
     fi
 
     echo "$1 install completed"
     echo ""
 }
-
-echo "Please input password so we can install dependancies. 
-Feel free to look over the script to make sure no funny business is going down."
-
-echo ""
-sudo echo "Welcome to James' dotfiles installer!"
-echo ""
-
-# install dependancies {
-    dependancies=('git' 'zsh' 'curl' 'vim')
-    echo "Installing dependancies [${dependancies[@]}]"
-
-    for i in "${dependancies[@]}"; do
-        maybeAptInstall $i
-    done
-# }
-
-########################################################################################################################
-## Installing dot files ################################################################################################
-########################################################################################################################
 
 onStartInstall() { # $1 is name of resource
     echo "[Installing $1] Status: Started"
@@ -60,6 +40,56 @@ maybeBackupConfig() { # $1 is the file path
         mv $1 ~/.backup_configs/ 
     fi
 }
+
+echo "Please input password so we can install dependancies. 
+Feel free to look over the script to make sure no funny business is going down."
+
+echo ""
+sudo echo "Welcome to James' dotfiles installer!"
+echo ""
+
+# assert xcode {
+    onStartInstall xcode
+    xcode-select --version 2>&1 >/dev/null
+    XCODE_IS_AVAILABLE=$?
+
+    if [ $XCODE_IS_AVAILABLE -eq 0 ]; then 
+        echo "  xcode -- passed"
+    else 
+        echo "  xcode -- failed"
+        echo "Please use xcode-select --install to install Command Line Tools (CLT) for Xcode and try again"
+        onFailInstall xcode
+        exit
+    fi
+    onFinishInstall xcode
+# }
+
+# assert homebrew {
+    onStartInstall brew
+    brew --version 2>&1 >/dev/null
+    BREW_IS_AVAILABLE=$?
+
+    if [ $BREW_IS_AVAILABLE -eq 0 ]; then 
+        echo "  brew -- passed"
+    else 
+        echo "  brew -- failed"
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+    onFinishInstall brew
+# }
+
+# install dependancies {
+    dependancies=('git' 'zsh' 'curl' 'vim')
+    echo "Installing dependancies [${dependancies[@]}]"
+
+    for i in "${dependancies[@]}"; do
+        maybeBrewInstall $i
+    done
+# }
+
+########################################################################################################################
+## Installing dot files ################################################################################################
+########################################################################################################################
 
 mkdir ~/.backup_configs >/dev/null
 
