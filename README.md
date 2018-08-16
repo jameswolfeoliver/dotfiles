@@ -1,6 +1,7 @@
 # dotfiles
 
-### Linux Install 
+### Linux Install - Tested 
 `bash -c "$(curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/install_linux.sh)"`
 
-BROKEN :(
+### Mac Install - Untested
+`bash -c "$(curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/install_mac.sh)"`
