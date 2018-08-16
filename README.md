@@ -1,6 +1,6 @@
 # dotfiles
 
-### Install
-`sh -c "$(curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/install.sh)"`
+### Linux Install 
+`bash -c "$(curl -fsSL https://raw.githubusercontent.com/jameswolfeoliver/dotfiles/master/install_linux.sh)"`
 
 BROKEN :(
