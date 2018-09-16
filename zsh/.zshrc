@@ -99,3 +99,16 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# powerlevel9k customisations
+# Right prompt
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+
+# Left prompt
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
+POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
+
+# Prompt Prefix
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭ "
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰ "
