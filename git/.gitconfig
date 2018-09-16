@@ -6,5 +6,6 @@
    co = checkout
    st = status
    up = remote update -p
-   ff = merge --ff-only
 
+[core]
+	excludesfile = /Users/jamesoliver/.gitignore
